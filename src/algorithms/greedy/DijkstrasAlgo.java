@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.greedy;
 
 public class DijkstrasAlgo {
     static final int VERTICES_SIZE =9;
