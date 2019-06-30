@@ -129,5 +129,7 @@ public class Main {
         testDijkstrasAdjMatrix();
         testMultistageGraph();*/
         testFloydWarshall();
+        testDijkstrasAdjMatrix();*/
+        testMultistageGraph();
     }
 }
