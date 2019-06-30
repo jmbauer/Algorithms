@@ -1,5 +1,6 @@
-import algorithms.*;
+import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
+import algorithms.greedy.*;
 import java.lang.*;
 
 public class Main {
@@ -95,11 +96,25 @@ public class Main {
         t.dijkstra(graph, 0);
     }
 
+    public static void testMultistageGraph()
+    {
+        int[][] graph = new int[][]{{INF, 1, 2, 5, INF, INF, INF, INF},
+                {INF, INF, INF, INF, 4, 11, INF, INF},
+                {INF, INF, INF, INF, 9, 5, 16, INF},
+                {INF, INF, INF, INF, INF, INF, 2, INF},
+                {INF, INF, INF, INF, INF, INF, INF, 18},
+                {INF, INF, INF, INF, INF, INF, INF, 13},
+                {INF, INF, INF, INF, INF, INF, INF, 2}};
+
+        System.out.println(shortestDist(graph));
+    }
+
     public static void main(String args[]) {
-        //testPrimAdjMatrix();
+        /*testPrimAdjMatrix();
         testPrimAdjList();
-        //testKruskalAlgoAdjMatrix();
-        //testKruskalsAlgoAdjList();
-        //testDijkstrasAdjMatrix();
+        testKruskalAlgoAdjMatrix();
+        testKruskalsAlgoAdjList();
+        testDijkstrasAdjMatrix();*/
+        testMultistageGraph();
     }
 }

@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.greedy;
 
 public class PrimsAlgoAdjMatrix {
     private static final int NUM_VERTICES = 5;
