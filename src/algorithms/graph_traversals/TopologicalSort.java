@@ -8,13 +8,13 @@ public class TopologicalSort {
         int maxLevel = 0;
         Stack<TopoVertex> stack = new Stack<>();
         for(TopoVertex v : vertices) {
-            Stack<TopoVertex> tempStack = new Stack<>();
             // 0 means it hasnt been visited yet
             if(v.maxDistance == 0) {
+                Stack<TopoVertex> tempStack = new Stack<>();
                 int distance = dfs(v, tempStack);
                 if(distance > maxLevel) {
-                    stack = tempStack;
                     maxLevel = distance;
+                    stack = tempStack;
                 }
             }
         }
@@ -29,7 +29,6 @@ public class TopologicalSort {
 
     private static int dfs(TopoVertex vertex, Stack<TopoVertex> stack) {
         vertex.maxDistance = 1;
-
         for(TopoVertex neighbor : vertex.edges) {
             int distance = neighbor.maxDistance != 0 ?
                     neighbor.maxDistance : dfs(neighbor, stack) + 1;

@@ -202,6 +202,7 @@ public class Main {
         // topological sort)
 
         List<TopoVertex> graph = new ArrayList<>();
+        TopoVertex v0 = new TopoVertex("JJ");
         TopoVertex v1 = new TopoVertex("ZC");
         TopoVertex v2 = new TopoVertex("CA");
         TopoVertex v3 = new TopoVertex("AB");
@@ -209,13 +210,13 @@ public class Main {
         TopoVertex v5 = new TopoVertex("JZ");
         TopoVertex v6 = new TopoVertex("ZT");
 
+        v0.edges.add(v5);
         v1.edges.add(v2);
         v2.edges.add(v3);
         v3.edges.add(v4);
         v4.edges.add(v1);
         v4.edges.add(v6);
-        v5.edges.add(v4);
-
+        graph.add(v0);
         graph.add(v1);
         graph.add(v2);
         graph.add(v3);
