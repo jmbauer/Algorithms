@@ -3,8 +3,12 @@ import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 import algorithms.dynamic_programming.BellmanFord;
 import algorithms.dynamic_programming.FloydWarshallAlgorithm;
 import algorithms.dynamic_programming.Knapsack01;
+import algorithms.graph_traversals.TopoVertex;
+import algorithms.graph_traversals.TopologicalSort;
 import algorithms.greedy.*;
 import java.lang.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -189,6 +193,40 @@ public class Main {
         Knapsack01.printKnapSack(items, capacity);
     }
 
+    public static void testTopologicalSort() {
+        // for this problem say we are listening to the radio
+        // the DJ will play 10 songs. The first person to call in
+        // and list the 10 songs sorted in such a way that the last
+        // letter of a song must be the first letter of the next song
+        // write an algorithm to perform this sort (this is a
+        // topological sort)
+
+        List<TopoVertex> graph = new ArrayList<>();
+        TopoVertex v1 = new TopoVertex("ZC");
+        TopoVertex v2 = new TopoVertex("CA");
+        TopoVertex v3 = new TopoVertex("AB");
+        TopoVertex v4 = new TopoVertex("BZ");
+        TopoVertex v5 = new TopoVertex("JZ");
+        TopoVertex v6 = new TopoVertex("ZT");
+
+        v1.edges.add(v2);
+        v2.edges.add(v3);
+        v3.edges.add(v4);
+        v4.edges.add(v1);
+        v4.edges.add(v6);
+        v5.edges.add(v4);
+
+        graph.add(v1);
+        graph.add(v2);
+        graph.add(v3);
+        graph.add(v4);
+        graph.add(v5);
+        graph.add(v6);
+
+        int result = TopologicalSort.findLargestPath(graph);
+        System.out.println(result);
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -200,7 +238,8 @@ public class Main {
         testDijkstrasAdjMatrix();
         testMultistageGraph();
         testBellmanFord();
-        testFractionalKnapsack();*/
-        testKnapsack01();
+        testFractionalKnapsack();
+        testKnapsack01();*/
+        testTopologicalSort();
     }
 }
