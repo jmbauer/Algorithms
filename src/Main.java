@@ -184,10 +184,9 @@ public class Main {
     }
 
     public static void testKnapsack01() {
-        int val[] = new int[]{60, 100, 120};
-        int wt[] = new int[]{10, 20, 30};
+        int items[][] = {{60, 10}, {100, 20}, {120, 30}};
         int  capacity = 50;
-        Knapsack01.printKnapSack(wt, val, capacity);
+        Knapsack01.printKnapSack(items, capacity);
     }
 
     public static void main(String args[]) {
