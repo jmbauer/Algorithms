@@ -1,5 +1,8 @@
 package algorithms.dynamic_programming;
 
+// finds all pairs shortest path
+// so it's the same as dijkstra's algorithm but instead of single
+// source vertex it's for all vertices (all pairs)
 public class FloydWarshallAlgorithm {
     final static int INF = Integer.MAX_VALUE, VERTICES_SIZE = 4;
 
