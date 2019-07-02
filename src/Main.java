@@ -1,5 +1,6 @@
 import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
+import algorithms.backtracking.TravellingSalesman;
 import algorithms.dynamic_programming.BellmanFord;
 import algorithms.dynamic_programming.FloydWarshallAlgorithm;
 import algorithms.dynamic_programming.Knapsack01;
@@ -228,6 +229,27 @@ public class Main {
         System.out.println(result);
     }
 
+    public static void jarvisMarchConvextHull() {
+        ConvexHullJarvisMarch.Point[] input = new ConvexHullJarvisMarch.Point[6];
+        input[0] = new ConvexHullJarvisMarch.Point(1,1);
+        input[1] = new ConvexHullJarvisMarch.Point(2,2);
+        input[2] = new ConvexHullJarvisMarch.Point(2,0);
+        input[3] = new ConvexHullJarvisMarch.Point(2,4);
+        input[4] = new ConvexHullJarvisMarch.Point(3,3);
+        input[5] = new ConvexHullJarvisMarch.Point(4,2);
+        ConvexHullJarvisMarch.outerTrees(input);
+    }
+
+    private static void testTravellingSalesman() {
+        int graph[][] = {
+            { 0, 10, 15, 20 },
+            { 10, 0, 35, 25 },
+            { 15, 35, 0, 30 },
+            { 20, 25, 30, 0 }
+        };
+        TravellingSalesman.tsp(graph);
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -240,7 +262,9 @@ public class Main {
         testMultistageGraph();
         testBellmanFord();
         testFractionalKnapsack();
-        testKnapsack01();*/
+        testKnapsack01();
         testTopologicalSort();
+        jarvisMarchConvextHull();*/
+        testTravellingSalesman();
     }
 }
