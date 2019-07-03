@@ -4,6 +4,7 @@ import algorithms.backtracking.TravellingSalesman;
 import algorithms.dynamic_programming.BellmanFord;
 import algorithms.dynamic_programming.FloydWarshallAlgorithm;
 import algorithms.dynamic_programming.Knapsack01;
+import algorithms.dynamic_programming.OptimalBinarySearchTree;
 import algorithms.graph_traversals.TopoVertex;
 import algorithms.graph_traversals.TopologicalSort;
 import algorithms.greedy.*;
@@ -250,6 +251,14 @@ public class Main {
         TravellingSalesman.tsp(graph);
     }
 
+    public static void testOptimalBinarySearchTree() {
+        int keys[] = { 50, 51, 52, 53, 54, 49, 99, 66, 77 };
+        int freq[] = { 10, 1, 1, 1, 1, 1, 10, 2, 1 };
+        int n = keys.length;
+        System.out.println("Cost of Optimal BST is "
+                + OptimalBinarySearchTree.optimalSearchTree(keys, freq, n));
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -264,7 +273,8 @@ public class Main {
         testFractionalKnapsack();
         testKnapsack01();
         testTopologicalSort();
-        jarvisMarchConvextHull();*/
-        testTravellingSalesman();
+        jarvisMarchConvextHull();
+        testTravellingSalesman();*/
+        testOptimalBinarySearchTree();
     }
 }
