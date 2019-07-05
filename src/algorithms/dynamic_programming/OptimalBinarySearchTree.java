@@ -15,11 +15,11 @@ public class OptimalBinarySearchTree {
             cost[i][i] = freq[i];
 
         // Now we need to consider chains of length 2, 3, ...
-        for (int diagnol = 2; diagnol <= n; diagnol++) {
+        for (int diagonal = 2; diagonal <= n; diagonal++) {
             // i is row
-            for (int i = 0; i <= n - diagnol + 1; i++) {
+            for (int i = 0; i <= n - diagonal + 1; i++) {
                 // Get column number j from row number i and chain length L
-                int j = i + diagnol - 1;
+                int j = i + diagonal - 1;
                 cost[i][j] = Integer.MAX_VALUE;
 
                 // Try making all keys in interval keys[i..j] as root

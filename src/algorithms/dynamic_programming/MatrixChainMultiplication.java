@@ -19,9 +19,9 @@ public class MatrixChainMultiplication {
         // multiplying the matrix with another matrix (it's just itself
 
         // L is chain length.
-        for (int diagnol = 1; diagnol < p.length - 1; diagnol++) {
-            for (int i = 1; i < p.length - diagnol; i++) {
-                int j = i + diagnol;
+        for (int diagonal = 1; diagonal < p.length - 1; diagonal++) {
+            for (int i = 1; i < p.length - diagonal; i++) {
+                int j = i + diagonal;
                 m[i][j] = Integer.MAX_VALUE;
 
                 for (int k = i; k <= j - 1; k++) {
