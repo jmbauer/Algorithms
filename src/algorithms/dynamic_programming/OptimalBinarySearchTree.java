@@ -1,5 +1,8 @@
 package algorithms.dynamic_programming;
 
+
+// O(n^4) loop through row, column, try all roots, and
+// find sum frequency i to j
 public class OptimalBinarySearchTree {
     public static int optimalSearchTree(int keys[], int freq[], int n) {
         /* cost[i][j] = Optimal cost of binary search tree that
@@ -11,13 +14,12 @@ public class OptimalBinarySearchTree {
         for (int i = 0; i < n; i++)
             cost[i][i] = freq[i];
 
-        // Now we need to consider chains of length 2, 3, ... .
-        // L is chain length.
-        for (int L = 2; L <= n; L++) {
+        // Now we need to consider chains of length 2, 3, ...
+        for (int diagnol = 2; diagnol <= n; diagnol++) {
             // i is row
-            for (int i = 0; i <= n - L + 1; i++) {
+            for (int i = 0; i <= n - diagnol + 1; i++) {
                 // Get column number j from row number i and chain length L
-                int j = i + L - 1;
+                int j = i + diagnol - 1;
                 cost[i][j] = Integer.MAX_VALUE;
 
                 // Try making all keys in interval keys[i..j] as root

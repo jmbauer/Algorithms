@@ -1,10 +1,7 @@
 import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
 import algorithms.backtracking.TravellingSalesman;
-import algorithms.dynamic_programming.BellmanFord;
-import algorithms.dynamic_programming.FloydWarshallAlgorithm;
-import algorithms.dynamic_programming.Knapsack01;
-import algorithms.dynamic_programming.OptimalBinarySearchTree;
+import algorithms.dynamic_programming.*;
 import algorithms.graph_traversals.TopoVertex;
 import algorithms.graph_traversals.TopologicalSort;
 import algorithms.greedy.*;
@@ -259,6 +256,20 @@ public class Main {
                 + OptimalBinarySearchTree.optimalSearchTree(keys, freq, n));
     }
 
+    public static void testMatrixChaingMultiplication() {
+        // matrix dimensions
+        // a1 dimensions: 2, 3
+        // a2 dimensions: 3, 4
+        // a3 dimensions: 4, 2
+        // so since a1 X a2 X a3 would have common dimensions
+        // for 3 and 4 we send those only 1 time then the outter
+        // dimensions as well which is 2 and 2
+        int dimensions[] = new int[] {2, 3, 4, 2};
+
+        System.out.println("Minimum number of multiplications is "+
+                MatrixChainMultiplication.MatrixChainOrder(dimensions));
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -276,5 +287,6 @@ public class Main {
         jarvisMarchConvextHull();
         testTravellingSalesman();*/
         testOptimalBinarySearchTree();
+        testMatrixChaingMultiplication();
     }
 }
