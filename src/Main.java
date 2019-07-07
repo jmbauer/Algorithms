@@ -2,6 +2,7 @@ import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
 import algorithms.backtracking.TravellingSalesman;
 import algorithms.dynamic_programming.*;
+import algorithms.graph_traversals.ArticulationPoints;
 import algorithms.graph_traversals.TopoVertex;
 import algorithms.graph_traversals.TopologicalSort;
 import algorithms.greedy.*;
@@ -270,6 +271,40 @@ public class Main {
                 MatrixChainMultiplication.MatrixChainOrder(dimensions));
     }
 
+    public static void testArticulationPoints()
+    {
+        // Create graphs given in above diagrams
+        System.out.println("Articulation points in first graph ");
+        ArticulationPoints g1 = new ArticulationPoints(5);
+        g1.addEdge(1, 0);
+        g1.addEdge(0, 2);
+        g1.addEdge(2, 1);
+        g1.addEdge(0, 3);
+        g1.addEdge(3, 4);
+        g1.AP();
+        System.out.println();
+
+        System.out.println("Articulation points in Second graph");
+        ArticulationPoints g2 = new ArticulationPoints(4);
+        g2.addEdge(0, 1);
+        g2.addEdge(1, 2);
+        g2.addEdge(2, 3);
+        g2.AP();
+        System.out.println();
+
+        System.out.println("Articulation points in Third graph ");
+        ArticulationPoints g3 = new ArticulationPoints(7);
+        g3.addEdge(0, 1);
+        g3.addEdge(1, 2);
+        g3.addEdge(2, 0);
+        g3.addEdge(1, 3);
+        g3.addEdge(1, 4);
+        g3.addEdge(1, 6);
+        g3.addEdge(3, 5);
+        g3.addEdge(4, 5);
+        g3.AP();
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -285,8 +320,9 @@ public class Main {
         testKnapsack01();
         testTopologicalSort();
         jarvisMarchConvextHull();
-        testTravellingSalesman();*/
+        testTravellingSalesman();
         testOptimalBinarySearchTree();
-        testMatrixChaingMultiplication();
+        testMatrixChaingMultiplication();*/
+        testArticulationPoints();
     }
 }
