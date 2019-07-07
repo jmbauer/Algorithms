@@ -30,8 +30,6 @@ public class ArticulationPoints {
 
         int children = 0;
         visited[u] = true;
-
-        // Initialize discovery time and low value
         disc[u] = low[u] = ++time;
 
         // Go through all vertices adjacent to this
@@ -43,24 +41,17 @@ public class ArticulationPoints {
                 parent[v] = u;
                 APUtil(v, visited, disc, low, parent, ap);
 
-                // Check if the subtree rooted with v has a connection to
-                // one of the ancestors of u
                 low[u]  = Math.min(low[u], low[v]);
 
-                // u is an articulation point in following cases
+                if (parent[u] != NIL && low[v] >= disc[u]) {
+                    ap[u] = true;
+                }
 
-                // (1) u is root of DFS tree and has two or more children.
+                // edge case for the root node
                 if (parent[u] == NIL && children > 1)
                     ap[u] = true;
-
-                // (2) If u is not root and low value of one of its child
-                // is more than discovery value of u.
-                if (parent[u] != NIL && low[v] >= disc[u])
-                    ap[u] = true;
             }
-
-            // Update low value of u for parent function calls.
-            else if (v != parent[u])
+            else
                 low[u]  = Math.min(low[u], disc[v]);
         }
     }

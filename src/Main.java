@@ -3,6 +3,7 @@ import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 import algorithms.backtracking.TravellingSalesman;
 import algorithms.dynamic_programming.*;
 import algorithms.graph_traversals.ArticulationPoints;
+import algorithms.graph_traversals.KosarajusAlgorithm;
 import algorithms.graph_traversals.TopoVertex;
 import algorithms.graph_traversals.TopologicalSort;
 import algorithms.greedy.*;
@@ -305,6 +306,20 @@ public class Main {
         g3.AP();
     }
 
+    public static void testStronglyConnectedComponents() {
+        // Create a graph given in the above diagram
+        KosarajusAlgorithm g = new KosarajusAlgorithm(5);
+        g.addEdge(1, 0);
+        g.addEdge(0, 2);
+        g.addEdge(2, 1);
+        g.addEdge(0, 3);
+        g.addEdge(3, 4);
+
+        System.out.println("Following are strongly connected components "+
+                "in given graph ");
+        g.printSCCs();
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -322,7 +337,8 @@ public class Main {
         jarvisMarchConvextHull();
         testTravellingSalesman();
         testOptimalBinarySearchTree();
-        testMatrixChaingMultiplication();*/
-        testArticulationPoints();
+        testMatrixChaingMultiplication();
+        testArticulationPoints();*/
+        testStronglyConnectedComponents();
     }
 }
