@@ -2,10 +2,7 @@ import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
 import algorithms.backtracking.TravellingSalesman;
 import algorithms.dynamic_programming.*;
-import algorithms.graph_traversals.ArticulationPoints;
-import algorithms.graph_traversals.KosarajusAlgorithm;
-import algorithms.graph_traversals.TopoVertex;
-import algorithms.graph_traversals.TopologicalSort;
+import algorithms.graph_traversals.*;
 import algorithms.greedy.*;
 import java.lang.*;
 import java.util.ArrayList;
@@ -15,7 +12,7 @@ public class Main {
 
     static int INF = Integer.MAX_VALUE;
 
-    public static void testPrimAdjMatrix() {
+    private static void testPrimAdjMatrix() {
         PrimsAlgoAdjMatrix t = new PrimsAlgoAdjMatrix();
         int graph[][] = new int[][] { { 0, 2, 0, 6, 0 },
                 { 2, 0, 3, 8, 5 },
@@ -25,7 +22,7 @@ public class Main {
         t.primMST(graph);
     }
 
-    public static void testPrimAdjList() {
+    private static void testPrimAdjList() {
         int V = 9;
 
         Graph graph = new Graph(V);
@@ -50,7 +47,7 @@ public class Main {
         prims.primsMst(graph);
     }
 
-    public static void testKruskalAlgoAdjMatrix() {
+    private static void testKruskalAlgoAdjMatrix() {
         int cost[][] = {
                 { INF, 2, INF, 6, INF },
                 { 2, INF, 3, 8, 5 },
@@ -61,7 +58,7 @@ public class Main {
         KruskalsAlgoAdjMatrix.kruskalMST(cost);
     }
 
-    public static void testKruskalsAlgoAdjList() {
+    private static void testKruskalsAlgoAdjList() {
         int V = 4;
         int E = 5;
         KruskalsAlgoAdjList graph = new KruskalsAlgoAdjList(V, E);
@@ -89,7 +86,7 @@ public class Main {
         graph.KruskalMST();
     }
 
-    public static void testDijkstrasAdjMatrix() {
+    private static void testDijkstrasAdjMatrix() {
         int graph[][] = new int[][]{{0, 4, 0, 0, 0, 0, 0, 8, 0},
                 {4, 0, 8, 0, 0, 0, 0, 11, 0},
                 {0, 8, 0, 7, 0, 4, 0, 0, 2},
@@ -104,8 +101,7 @@ public class Main {
         t.dijkstra(graph, 0);
     }
 
-    public static void testMultistageGraph()
-    {
+    private static void testMultistageGraph() {
         int[][] graph = new int[][]{{INF, 1, 2, 5, INF, INF, INF, INF},
                 {INF, INF, INF, INF, 4, 11, INF, INF},
                 {INF, INF, INF, INF, 9, 5, 16, INF},
@@ -117,8 +113,7 @@ public class Main {
         System.out.println(shortestDist(graph));
     }
 
-    public static void testFloydWarshall()
-    {
+    private static void testFloydWarshall() {
         int graph[][] = { {0, 3, INF, 7},
                 {8, 0, 2, INF},
                 {5, INF, 0,   1},
@@ -128,57 +123,40 @@ public class Main {
         a.floydWarshall(graph);
     }
 
-    public static void testBellmanFord() {
-        int V = 5;  // Number of vertices in graph
-        int E = 8;  // Number of edges in graph
+    private static void testBellmanFord() {
+        int V = 5;
+        int E = 8;
 
         BellmanFord graph = new BellmanFord(V, E);
-
-        // add edge 0-1 (or A-B in above figure)
         graph.edge[0].src = 0;
         graph.edge[0].dest = 1;
         graph.edge[0].weight = -1;
-
-        // add edge 0-2 (or A-C in above figure)
         graph.edge[1].src = 0;
         graph.edge[1].dest = 2;
         graph.edge[1].weight = 4;
-
-        // add edge 1-2 (or B-C in above figure)
         graph.edge[2].src = 1;
         graph.edge[2].dest = 2;
         graph.edge[2].weight = 3;
-
-        // add edge 1-3 (or B-D in above figure)
         graph.edge[3].src = 1;
         graph.edge[3].dest = 3;
         graph.edge[3].weight = 2;
-
-        // add edge 1-4 (or A-E in above figure)
         graph.edge[4].src = 1;
         graph.edge[4].dest = 4;
         graph.edge[4].weight = 2;
-
-        // add edge 3-2 (or D-C in above figure)
         graph.edge[5].src = 3;
         graph.edge[5].dest = 2;
         graph.edge[5].weight = 5;
-
-        // add edge 3-1 (or D-B in above figure)
         graph.edge[6].src = 3;
         graph.edge[6].dest = 1;
         graph.edge[6].weight = 1;
-
-        // add edge 4-3 (or E-D in above figure)
         graph.edge[7].src = 4;
         graph.edge[7].dest = 3;
         graph.edge[7].weight = -3;
-
         graph.BellmanFord(0);
     }
 
     // Time complexity O(n log n)
-    public static void testFractionalKnapsack() {
+    private static void testFractionalKnapsack() {
         int[] wt = {10, 40, 20, 30};
         int[] val = {60, 40, 100, 120};
         int capacity = 50;
@@ -188,13 +166,13 @@ public class Main {
                 maxValue);
     }
 
-    public static void testKnapsack01() {
+    private static void testKnapsack01() {
         int items[][] = {{60, 10}, {100, 20}, {120, 30}};
         int  capacity = 50;
         Knapsack01.printKnapSack(items, capacity);
     }
 
-    public static void testTopologicalSort() {
+    private static void testRadioSongs() {
         // for this problem say we are listening to the radio
         // the DJ will play 10 songs. The first person to call in
         // and list the 10 songs sorted in such a way that the last
@@ -225,11 +203,11 @@ public class Main {
         graph.add(v5);
         graph.add(v6);
 
-        int result = TopologicalSort.findLargestPath(graph);
+        int result = RadioSongs.findLargestPath(graph);
         System.out.println(result);
     }
 
-    public static void jarvisMarchConvextHull() {
+    private static void jarvisMarchConvextHull() {
         ConvexHullJarvisMarch.Point[] input = new ConvexHullJarvisMarch.Point[6];
         input[0] = new ConvexHullJarvisMarch.Point(1,1);
         input[1] = new ConvexHullJarvisMarch.Point(2,2);
@@ -250,7 +228,7 @@ public class Main {
         TravellingSalesman.tsp(graph);
     }
 
-    public static void testOptimalBinarySearchTree() {
+    private static void testOptimalBinarySearchTree() {
         int keys[] = { 50, 51, 52, 53, 54, 49, 99, 66, 77 };
         int freq[] = { 10, 1, 1, 1, 1, 1, 10, 2, 1 };
         int n = keys.length;
@@ -258,7 +236,7 @@ public class Main {
                 + OptimalBinarySearchTree.optimalSearchTree(keys, freq, n));
     }
 
-    public static void testMatrixChaingMultiplication() {
+    private static void testMatrixChaingMultiplication() {
         // matrix dimensions
         // a1 dimensions: 2, 3
         // a2 dimensions: 3, 4
@@ -272,9 +250,7 @@ public class Main {
                 MatrixChainMultiplication.MatrixChainOrder(dimensions));
     }
 
-    public static void testArticulationPoints()
-    {
-        // Create graphs given in above diagrams
+    private static void testArticulationPoints() {
         System.out.println("Articulation points in first graph ");
         ArticulationPoints g1 = new ArticulationPoints(5);
         g1.addEdge(1, 0);
@@ -306,8 +282,7 @@ public class Main {
         g3.AP();
     }
 
-    public static void testStronglyConnectedComponents() {
-        // Create a graph given in the above diagram
+    private static void testStronglyConnectedComponents() {
         KosarajusAlgorithm g = new KosarajusAlgorithm(5);
         g.addEdge(1, 0);
         g.addEdge(0, 2);
@@ -318,6 +293,48 @@ public class Main {
         System.out.println("Following are strongly connected components "+
                 "in given graph ");
         g.printSCCs();
+    }
+
+    private static void testTopologicalSort() {
+        TopologicalSort g = new TopologicalSort(6);
+        g.addEdge(5, 2);
+        g.addEdge(5, 0);
+        g.addEdge(4, 0);
+        g.addEdge(4, 1);
+        g.addEdge(2, 3);
+        g.addEdge(3, 1);
+
+        System.out.println("Following is a Topological " +
+                "sort of the given graph");
+        g.topologicalSort();
+    }
+
+    private static void testDetectCycle() {
+        DetectCycle graph = new DetectCycle(4);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 3);
+
+        if(graph.isCyclic())
+            System.out.println("Graph1 contains cycle");
+        else
+            System.out.println("Graph1 doesn't "
+                    + "contain cycle");
+
+        DetectCycle graph2 = new DetectCycle(4);
+        graph2.addEdge(0, 1);
+        graph2.addEdge(0, 2);
+        graph2.addEdge(1, 2);
+        graph2.addEdge(2, 3);
+
+        if(graph2.isCyclic())
+            System.out.println("Graph2 contains cycle");
+        else
+            System.out.println("Graph2 doesn't "
+                    + "contain cycle");
     }
 
     public static void main(String args[]) {
@@ -333,12 +350,14 @@ public class Main {
         testBellmanFord();
         testFractionalKnapsack();
         testKnapsack01();
-        testTopologicalSort();
+        testRadioSongs();
         jarvisMarchConvextHull();
         testTravellingSalesman();
         testOptimalBinarySearchTree();
         testMatrixChaingMultiplication();
-        testArticulationPoints();*/
+        testArticulationPoints();
         testStronglyConnectedComponents();
+        testTopologicalSort();*/
+        testDetectCycle();
     }
 }

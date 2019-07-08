@@ -1,45 +1,50 @@
 package algorithms.graph_traversals;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class TopologicalSort {
-    public static int findLargestPath(List<TopoVertex> vertices) {
-        int maxLevel = 0;
-        Stack<TopoVertex> stack = new Stack<>();
-        for(TopoVertex v : vertices) {
-            // 0 means it hasnt been visited yet
-            if(v.maxDistance == 0) {
-                Stack<TopoVertex> tempStack = new Stack<>();
-                int distance = dfs(v, tempStack);
-                if(distance > maxLevel) {
-                    maxLevel = distance;
-                    stack = tempStack;
-                }
-            }
-        }
+    private int V;
+    private List<Integer> adj[];
 
-        while (stack.empty()==false) {
-            TopoVertex t = stack.pop();
-            System.out.print(t.label + " -> ");
+    public TopologicalSort(int v) {
+        V = v;
+        adj = new ArrayList[v];
+        for (int i = 0; i < v; ++i) {
+            adj[i] = new ArrayList();
         }
-        System.out.println("*** end ***");
-        return maxLevel;
     }
 
-    private static int dfs(TopoVertex vertex, Stack<TopoVertex> stack) {
-        vertex.maxDistance = 1;
-        for(TopoVertex neighbor : vertex.edges) {
-            int distance = neighbor.maxDistance != 0 ?
-                    neighbor.maxDistance : dfs(neighbor, stack) + 1;
-            if(distance > vertex.maxDistance) {
-                vertex.maxDistance = distance;
-                stack.push(vertex);
-            }
+    public void addEdge(int v, int w) {
+        adj[v].add(w);
+    }
+
+    void topologicalSortUtil(int v, boolean visited[],
+                             Stack<Integer> stack) {
+        visited[v] = true;
+
+        for(Integer i : adj[v]) {
+            if (!visited[i])
+                topologicalSortUtil(i, visited, stack);
         }
-        // means we visited all children and this should be
-        // at bottom of stack
-        if(stack.isEmpty()) stack.push(vertex);
-        return vertex.maxDistance;
+
+        stack.push(new Integer(v));
+    }
+
+    public void topologicalSort() {
+        Stack<Integer> stack = new Stack<>();
+        boolean visited[] = new boolean[V];
+
+        for (int i = 0; i < V; i++)
+            visited[i] = false;
+
+        for (int i = 0; i < V; i++)
+            if (visited[i] == false)
+                topologicalSortUtil(i, visited, stack);
+
+        while (stack.empty() == false)
+            System.out.print(stack.pop() + " ");
     }
 }
+
