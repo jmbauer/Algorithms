@@ -27,8 +27,7 @@ public class KruskalsAlgoAdjList {
             edge[i] = new Edge();
     }
 
-    int find(Subset subsets[], int i)
-    {
+    int find(Subset subsets[], int i) {
         // find root and make root as parent of i (path compression)
         if (subsets[i].parent != i) {
             subsets[i].parent = find(subsets, subsets[i].parent);

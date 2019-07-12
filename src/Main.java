@@ -309,8 +309,8 @@ public class Main {
         g.topologicalSort();
     }
 
-    private static void testDetectCycle() {
-        DetectCycle graph = new DetectCycle(4);
+    private static void testDetectCycleDirected() {
+        DetectCycleDirectedGraph graph = new DetectCycleDirectedGraph(4);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
@@ -324,7 +324,7 @@ public class Main {
             System.out.println("Graph1 doesn't "
                     + "contain cycle");
 
-        DetectCycle graph2 = new DetectCycle(4);
+        DetectCycleDirectedGraph graph2 = new DetectCycleDirectedGraph(4);
         graph2.addEdge(0, 1);
         graph2.addEdge(0, 2);
         graph2.addEdge(1, 2);
@@ -335,6 +335,43 @@ public class Main {
         else
             System.out.println("Graph2 doesn't "
                     + "contain cycle");
+    }
+
+    public static void testDetectCycleUndirected() {
+        int V = 3, E = 3;
+        DetectCycleUndirectedGraph graph = new DetectCycleUndirectedGraph(V, E);
+
+        // add edge 0-1
+        graph.edge[0].src = 0;
+        graph.edge[0].dest = 1;
+
+        // add edge 1-2
+        graph.edge[1].src = 1;
+        graph.edge[1].dest = 2;
+
+        // add edge 0-2
+        graph.edge[2].src = 0;
+        graph.edge[2].dest = 2;
+
+        if (graph.isCycle(graph))
+            System.out.println( "graph contains cycle" );
+        else
+            System.out.println( "graph doesn't contain cycle" );
+    }
+
+    public static void testFordFulkerson() {
+        int graph[][] =new int[][] { {0, 16, 13, 0, 0, 0},
+                {0, 0, 10, 12, 0, 0},
+                {0, 4, 0, 0, 14, 0},
+                {0, 0, 9, 0, 0, 20},
+                {0, 0, 0, 7, 0, 4},
+                {0, 0, 0, 0, 0, 0}
+        };
+        FordFulkerson m = new FordFulkerson();
+
+        System.out.println("The maximum possible flow is " +
+                m.fordFulkerson(graph, 0, 5));
+
     }
 
     public static void main(String args[]) {
@@ -357,7 +394,9 @@ public class Main {
         testMatrixChaingMultiplication();
         testArticulationPoints();
         testStronglyConnectedComponents();
-        testTopologicalSort();*/
-        testDetectCycle();
+        testTopologicalSort();
+        testDetectCycleDirected();
+        testDetectCycleUndirected();*/
+        testFordFulkerson();
     }
 }

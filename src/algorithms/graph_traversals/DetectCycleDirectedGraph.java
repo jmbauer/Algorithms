@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DetectCycle {
+public class DetectCycleDirectedGraph {
 
     private final int V;
     private final List<List<Integer>> adj;
 
-    public DetectCycle(int V) {
+    public DetectCycleDirectedGraph(int V) {
         this.V = V;
         adj = new ArrayList<>(V);
 
@@ -31,9 +31,11 @@ public class DetectCycle {
         recStack[i] = true;
         List<Integer> children = adj.get(i);
 
-        for (Integer c : children)
-            if (isCyclicUtil(c, visited, recStack))
+        for (Integer c : children) {
+            if (isCyclicUtil(c, visited, recStack)) {
                 return true;
+            }
+        }
 
         recStack[i] = false;
 
