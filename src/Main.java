@@ -1,12 +1,14 @@
 import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
-import algorithms.backtracking.TravellingSalesman;
+import algorithms.backtracking.*;
 import algorithms.dynamic_programming.*;
 import algorithms.graph_traversals.*;
 import algorithms.greedy.*;
 import java.lang.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -188,6 +190,7 @@ public class Main {
         TopoVertex v4 = new TopoVertex("BZ");
         TopoVertex v5 = new TopoVertex("JZ");
         TopoVertex v6 = new TopoVertex("ZT");
+        TopoVertex v7 = new TopoVertex("TJ");
 
         v0.edges.add(v5);
         v1.edges.add(v2);
@@ -195,6 +198,8 @@ public class Main {
         v3.edges.add(v4);
         v4.edges.add(v1);
         v4.edges.add(v6);
+        v6.edges.add(v7);
+        v7.edges.add(v0);
         graph.add(v0);
         graph.add(v1);
         graph.add(v2);
@@ -202,6 +207,7 @@ public class Main {
         graph.add(v4);
         graph.add(v5);
         graph.add(v6);
+        graph.add(v7);
 
         int result = RadioSongs.findLargestPath(graph);
         System.out.println(result);
@@ -374,6 +380,57 @@ public class Main {
 
     }
 
+    public static void testNQueens() {
+        NQueens program = new NQueens();
+        List<List<String>> result = program.solveNQueens(4);
+        for(List<String> ans : result) {
+            for(String q : ans) {
+                System.out.println(q);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void testSumOfSubsets() {
+        SumOfSubsets s = new SumOfSubsets();
+        List<Integer> values = new ArrayList<>(Arrays.asList(5, 10, 15, 20, 13));
+        List<List<Integer>> result = s.sumOfSubsets(values, 30);
+        System.out.print(result);
+    }
+
+    public static void testMColoringGraph() {
+        MColoringGraph coloring = new MColoringGraph();
+        int graph[][] = {{0, 1, 1, 1},
+                {1, 0, 1, 0},
+                {1, 1, 0, 1},
+                {1, 0, 1, 0},
+        };
+        int m = 3;
+        coloring.graphColoring(graph, m);
+    }
+
+    public static void testHamiltonianCycle() {
+        HamiltonianCycle hamiltonian =
+                new HamiltonianCycle();
+        int graph1[][] = {{0, 1, 0, 1, 0},
+                {1, 0, 1, 1, 1},
+                {0, 1, 0, 0, 1},
+                {1, 1, 0, 0, 1},
+                {0, 1, 1, 1, 0},
+        };
+
+        hamiltonian.hamCycle(graph1);
+
+        int graph2[][] = {{0, 1, 0, 1, 0},
+                {1, 0, 1, 1, 1},
+                {0, 1, 0, 0, 1},
+                {1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0},
+        };
+
+        hamiltonian.hamCycle(graph2);
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -396,7 +453,11 @@ public class Main {
         testStronglyConnectedComponents();
         testTopologicalSort();
         testDetectCycleDirected();
-        testDetectCycleUndirected();*/
+        testDetectCycleUndirected();
         testFordFulkerson();
+        testNQueens();
+        testSumOfSubsets();
+        testMColoringGraph();*/
+        testHamiltonianCycle();
     }
 }
