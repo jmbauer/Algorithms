@@ -14,7 +14,7 @@ public class FordFulkerson {
         for (int i = 0; i < V; ++i)
             visited[i] = false;
 
-        LinkedList<Integer> queue = new LinkedList<Integer>();
+        LinkedList<Integer> queue = new LinkedList<>();
         queue.add(s);
         visited[s] = true;
         parent[s] = -1;

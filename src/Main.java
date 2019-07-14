@@ -1,5 +1,6 @@
 import static algorithms.dynamic_programming.MultistageGraph.shortestDist;
 
+import algorithms.BranchAndBound.JobSequencingWithDeadlines;
 import algorithms.backtracking.*;
 import algorithms.dynamic_programming.*;
 import algorithms.graph_traversals.*;
@@ -431,6 +432,17 @@ public class Main {
         hamiltonian.hamCycle(graph2);
     }
 
+    public static void testJobSequencing() {
+        JobSequencingWithDeadlines program = new JobSequencingWithDeadlines();
+        int costMatrix[][] = {
+            {9, 2, 7, 8},
+            {6, 4, 3, 7},
+            {5, 8, 1, 8},
+            {7, 6, 9, 4}
+        };
+        System.out.println("Optimal Cost is " + program.findMinCost(costMatrix));
+    }
+
     public static void main(String args[]) {
         /*testPrimAdjMatrix();
         testPrimAdjList();
@@ -457,7 +469,8 @@ public class Main {
         testFordFulkerson();
         testNQueens();
         testSumOfSubsets();
-        testMColoringGraph();*/
-        testHamiltonianCycle();
+        testMColoringGraph();
+        testHamiltonianCycle();*/
+        testJobSequencing();
     }
 }

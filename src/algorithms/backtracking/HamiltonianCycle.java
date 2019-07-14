@@ -44,6 +44,7 @@ public class HamiltonianCycle {
         return false;
     }
 
+    // finds only 1, can be modified to find all hamiltonion cycles
     public void hamCycle(int graph[][]) {
         path = new int[V];
         for (int i = 0; i < V; i++)
